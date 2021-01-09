@@ -15,6 +15,7 @@ namespace DataLayer.Context
         public DbSet<File> Files { get; set; }
         public DbSet<Document> Documents { get; set; }
         public DbSet<Transmital> Transmitals { get; set; }
+        public DbSet<Navis3dModel> Navis3dModels { get; set; }
 
 
 
@@ -32,24 +33,27 @@ namespace DataLayer.Context
 
             //File
             modelBuilder.Entity<File>()
-                .Property(t => t.ID)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
-
-            modelBuilder.Entity<File>()
-               .Property(t => t.FileName)
-               .HasMaxLength(50)
-               .IsRequired()
+               .HasKey(t => t.FullPath)
+               .Property(t => t.FullPath)
+               .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
+               .IsMaxLength()
                .HasColumnType("nvarchar");
 
             modelBuilder.Entity<File>()
               .Property(t => t.LastComment)
+              .HasColumnType("nvarchar")
               .IsMaxLength();
+
+            modelBuilder.Entity<File>()
+              .Property(t => t.DocumentNumber)
+              .HasMaxLength(50)
+              .IsOptional();
 
             modelBuilder.Entity<File>()
              .HasRequired(f => f.Creator)
              .WithMany(p => p.CreatedFiles)
              .HasForeignKey(f => f.CreatorId)
-             .WillCascadeOnDelete(false);
+             .WillCascadeOnDelete(true);
 
             modelBuilder.Entity<File>()
              .HasRequired(p => p.LastEditor)
@@ -57,9 +61,6 @@ namespace DataLayer.Context
              .HasForeignKey(f => f.EditorId)
              .WillCascadeOnDelete(false);
 
-            //modelBuilder.Entity<File>()
-            //.HasRequired(d => d.Document)
-            //.WithOptional(f => f.File);
 
             //Document
             modelBuilder.Entity<Document>()
@@ -69,14 +70,9 @@ namespace DataLayer.Context
 
             modelBuilder.Entity<Document>()
             .HasRequired(t => t.Transmital)
-            .WithMany(d=>d.Documents)
+            .WithMany(d => d.Documents)
             .HasForeignKey(t => t.TransmitalNumber)
             .WillCascadeOnDelete(false);
-
-           // modelBuilder.Entity<Document>()
-           //.HasOptional(f => f.File)
-           //.WithRequired(d => d.Document)
-           //.WillCascadeOnDelete(false);
 
             //Transmital
             modelBuilder.Entity<Transmital>()
@@ -84,6 +80,33 @@ namespace DataLayer.Context
              .Property(t => t.TransmitalNumber)
              .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
+
+            //NavisedModel
+            modelBuilder.Entity<Navis3dModel>()
+             .HasKey(t => t.Navis3dModelId);
+            modelBuilder.Entity<Navis3dModel>()
+             .Property(t => t.ItemName)
+             .IsRequired()
+             .HasMaxLength(50);
+            modelBuilder.Entity<Navis3dModel>()
+            .Property(t => t.demo)
+            .IsOptional()
+            .HasMaxLength(50)
+            .HasColumnType("nvarchar");
+
+            //Hyperlinks
+            modelBuilder.Entity<Hyperlink>()
+            .HasKey(t => t.HyperlinkId);
+            modelBuilder.Entity<Hyperlink>()
+            .Property(p => p.HyperlinkPath)
+            .IsMaxLength()
+            .IsRequired()
+            .HasColumnType("nvarchar");
+
+            modelBuilder.Entity<Hyperlink>()
+           .HasRequired(a => a.Navis3DModel)
+           .WithMany(h => h.Hyperlinks)
+           .HasForeignKey(h => h.Navis3dModelId);
         }
     }
 

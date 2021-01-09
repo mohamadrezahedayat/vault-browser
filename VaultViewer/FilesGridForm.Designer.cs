@@ -30,11 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             this.fileGridView = new System.Windows.Forms.DataGridView();
+            this.fileBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnSync = new System.Windows.Forms.Button();
             this.btmCleanFilesDb = new System.Windows.Forms.Button();
-            this.fileBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fileNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FullPath = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DocumentNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.creatorIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.creationDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.editorIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,8 +56,8 @@
             this.fileGridView.AutoGenerateColumns = false;
             this.fileGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.fileGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.iDDataGridViewTextBoxColumn,
-            this.fileNameDataGridViewTextBoxColumn,
+            this.FullPath,
+            this.DocumentNumber,
             this.creatorIdDataGridViewTextBoxColumn,
             this.creationDateDataGridViewTextBoxColumn,
             this.editorIdDataGridViewTextBoxColumn,
@@ -66,19 +66,25 @@
             this.lastCommentDataGridViewTextBoxColumn,
             this.lastStateDataGridViewTextBoxColumn});
             this.fileGridView.DataSource = this.fileBindingSource;
-            this.fileGridView.Location = new System.Drawing.Point(0, 53);
+            this.fileGridView.Location = new System.Drawing.Point(0, 34);
+            this.fileGridView.Margin = new System.Windows.Forms.Padding(2);
             this.fileGridView.Name = "fileGridView";
             this.fileGridView.ReadOnly = true;
             this.fileGridView.RowHeadersWidth = 62;
             this.fileGridView.RowTemplate.Height = 28;
-            this.fileGridView.Size = new System.Drawing.Size(815, 397);
+            this.fileGridView.Size = new System.Drawing.Size(543, 258);
             this.fileGridView.TabIndex = 0;
+            // 
+            // fileBindingSource
+            // 
+            this.fileBindingSource.DataSource = typeof(DataLayer.Models.File);
             // 
             // btnSync
             // 
-            this.btnSync.Location = new System.Drawing.Point(12, 12);
+            this.btnSync.Location = new System.Drawing.Point(8, 8);
+            this.btnSync.Margin = new System.Windows.Forms.Padding(2);
             this.btnSync.Name = "btnSync";
-            this.btnSync.Size = new System.Drawing.Size(148, 35);
+            this.btnSync.Size = new System.Drawing.Size(99, 23);
             this.btnSync.TabIndex = 1;
             this.btnSync.Text = "Sync From Vault";
             this.btnSync.UseVisualStyleBackColor = true;
@@ -86,35 +92,28 @@
             // 
             // btmCleanFilesDb
             // 
-            this.btmCleanFilesDb.Location = new System.Drawing.Point(176, 12);
+            this.btmCleanFilesDb.Location = new System.Drawing.Point(117, 8);
+            this.btmCleanFilesDb.Margin = new System.Windows.Forms.Padding(2);
             this.btmCleanFilesDb.Name = "btmCleanFilesDb";
-            this.btmCleanFilesDb.Size = new System.Drawing.Size(148, 35);
+            this.btmCleanFilesDb.Size = new System.Drawing.Size(99, 23);
             this.btmCleanFilesDb.TabIndex = 2;
             this.btmCleanFilesDb.Text = "Clean All";
             this.btmCleanFilesDb.UseVisualStyleBackColor = true;
             this.btmCleanFilesDb.Click += new System.EventHandler(this.btmCleanFilesDb_Click);
             // 
-            // fileBindingSource
+            // FullPath
             // 
-            this.fileBindingSource.DataSource = typeof(DataLayer.Models.File);
+            this.FullPath.DataPropertyName = "FullPath";
+            this.FullPath.HeaderText = "FullPath";
+            this.FullPath.Name = "FullPath";
+            this.FullPath.ReadOnly = true;
             // 
-            // iDDataGridViewTextBoxColumn
+            // DocumentNumber
             // 
-            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.iDDataGridViewTextBoxColumn.MinimumWidth = 8;
-            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.iDDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // fileNameDataGridViewTextBoxColumn
-            // 
-            this.fileNameDataGridViewTextBoxColumn.DataPropertyName = "FileName";
-            this.fileNameDataGridViewTextBoxColumn.HeaderText = "FileName";
-            this.fileNameDataGridViewTextBoxColumn.MinimumWidth = 8;
-            this.fileNameDataGridViewTextBoxColumn.Name = "fileNameDataGridViewTextBoxColumn";
-            this.fileNameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.fileNameDataGridViewTextBoxColumn.Width = 150;
+            this.DocumentNumber.DataPropertyName = "DocumentNumber";
+            this.DocumentNumber.HeaderText = "DocumentNumber";
+            this.DocumentNumber.Name = "DocumentNumber";
+            this.DocumentNumber.ReadOnly = true;
             // 
             // creatorIdDataGridViewTextBoxColumn
             // 
@@ -123,7 +122,7 @@
             this.creatorIdDataGridViewTextBoxColumn.MinimumWidth = 8;
             this.creatorIdDataGridViewTextBoxColumn.Name = "creatorIdDataGridViewTextBoxColumn";
             this.creatorIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.creatorIdDataGridViewTextBoxColumn.Width = 150;
+            this.creatorIdDataGridViewTextBoxColumn.Width = 50;
             // 
             // creationDateDataGridViewTextBoxColumn
             // 
@@ -141,7 +140,7 @@
             this.editorIdDataGridViewTextBoxColumn.MinimumWidth = 8;
             this.editorIdDataGridViewTextBoxColumn.Name = "editorIdDataGridViewTextBoxColumn";
             this.editorIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.editorIdDataGridViewTextBoxColumn.Width = 150;
+            this.editorIdDataGridViewTextBoxColumn.Width = 50;
             // 
             // lastRevisionDateDataGridViewTextBoxColumn
             // 
@@ -159,7 +158,7 @@
             this.lastRevisionIDDataGridViewTextBoxColumn.MinimumWidth = 8;
             this.lastRevisionIDDataGridViewTextBoxColumn.Name = "lastRevisionIDDataGridViewTextBoxColumn";
             this.lastRevisionIDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.lastRevisionIDDataGridViewTextBoxColumn.Width = 150;
+            this.lastRevisionIDDataGridViewTextBoxColumn.Width = 50;
             // 
             // lastCommentDataGridViewTextBoxColumn
             // 
@@ -181,15 +180,15 @@
             // 
             // FilesGridForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(814, 450);
+            this.ClientSize = new System.Drawing.Size(543, 292);
             this.Controls.Add(this.btmCleanFilesDb);
             this.Controls.Add(this.btnSync);
             this.Controls.Add(this.fileGridView);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FilesGridForm";
             this.Text = "Files";
-            
             ((System.ComponentModel.ISupportInitialize)(this.fileGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -206,6 +205,8 @@
         private System.Windows.Forms.BindingSource fileBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fileNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FullPath;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DocumentNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn creatorIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn creationDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn editorIdDataGridViewTextBoxColumn;

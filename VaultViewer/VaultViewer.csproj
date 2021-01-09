@@ -202,9 +202,12 @@
       <Name>Excel</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Bitmap1.bmp" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(ProjectDir)..\..\..\..\bin\$(PlatformName)\clmloader.dll" "$(TargetDir)" /y</PostBuildEvent>
+    <PostBuildEvent>xcopy "C:\Program Files (x86)\Autodesk\Autodesk Vault 2018 SDK\bin\$(PlatformName)\clmloader.dll" "$(TargetDir)" /y</PostBuildEvent>
   </PropertyGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -15,11 +15,11 @@ namespace DataLayer.Models
     
     public class Document
     {
-
         public string DocumentNumber { get; set; }
         public string Title { get; set; }
         //public File File { get; set; }
         public Version DocumentVersion { get; set; }
+
         public virtual Transmital Transmital { get; set; }
         public string TransmitalNumber { get; set; }
 

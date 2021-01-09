@@ -53,21 +53,27 @@
   <ItemGroup>
     <Compile Include="Context\MyContext.cs" />
     <Compile Include="GenericRepository.cs" />
-    <Compile Include="Migrations\202010101234307_InitialModel.cs" />
-    <Compile Include="Migrations\202010101234307_InitialModel.designer.cs">
-      <DependentUpon>202010101234307_InitialModel.cs</DependentUpon>
+    <Compile Include="Migrations\202101051319439_initial_migration.cs" />
+    <Compile Include="Migrations\202101051319439_initial_migration.designer.cs">
+      <DependentUpon>202101051319439_initial_migration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202010111335243_EditTransmita2DocRelation.cs" />
-    <Compile Include="Migrations\202010111335243_EditTransmita2DocRelation.designer.cs">
-      <DependentUpon>202010111335243_EditTransmita2DocRelation.cs</DependentUpon>
+    <Compile Include="Migrations\202101051336380_add_documnentNumner_To_File.cs" />
+    <Compile Include="Migrations\202101051336380_add_documnentNumner_To_File.designer.cs">
+      <DependentUpon>202101051336380_add_documnentNumner_To_File.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202010111339392_EditTransmita2DocRelationUndo.cs" />
-    <Compile Include="Migrations\202010111339392_EditTransmita2DocRelationUndo.designer.cs">
-      <DependentUpon>202010111339392_EditTransmita2DocRelationUndo.cs</DependentUpon>
+    <Compile Include="Migrations\202101062013554_edit_fileTitle_length.cs" />
+    <Compile Include="Migrations\202101062013554_edit_fileTitle_length.designer.cs">
+      <DependentUpon>202101062013554_edit_fileTitle_length.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101090650234_edit_file_table_add_FullPath_remove_id.cs" />
+    <Compile Include="Migrations\202101090650234_edit_file_table_add_FullPath_remove_id.designer.cs">
+      <DependentUpon>202101090650234_edit_file_table_add_FullPath_remove_id.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Document.cs" />
     <Compile Include="Models\File.cs" />
+    <Compile Include="Models\Hyperlink.cs" />
+    <Compile Include="Models\Navis3dModel.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Transmital.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -83,14 +89,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202010101234307_InitialModel.resx">
-      <DependentUpon>202010101234307_InitialModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202101051319439_initial_migration.resx">
+      <DependentUpon>202101051319439_initial_migration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010111335243_EditTransmita2DocRelation.resx">
-      <DependentUpon>202010111335243_EditTransmita2DocRelation.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202101051336380_add_documnentNumner_To_File.resx">
+      <DependentUpon>202101051336380_add_documnentNumner_To_File.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010111339392_EditTransmita2DocRelationUndo.resx">
-      <DependentUpon>202010111339392_EditTransmita2DocRelationUndo.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202101062013554_edit_fileTitle_length.resx">
+      <DependentUpon>202101062013554_edit_fileTitle_length.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101090650234_edit_file_table_add_FullPath_remove_id.resx">
+      <DependentUpon>202101090650234_edit_file_table_add_FullPath_remove_id.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

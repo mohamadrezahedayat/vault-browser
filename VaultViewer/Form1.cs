@@ -276,7 +276,7 @@ namespace VaultBrowserSample
             }
             catch (Exception e)
             {
-
+                MessageBox.Show(e.Message);
             }
 
         }
@@ -591,6 +591,16 @@ namespace VaultBrowserSample
         {
             var frmMdrGrid = new MdrGridForm(m_conn);
             frmMdrGrid.Show();
+        }
+
+        private void personToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void transmitalsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

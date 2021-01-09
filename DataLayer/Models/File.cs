@@ -16,15 +16,19 @@ namespace DataLayer.Models
         e
     }
     public class File
-    {
-        public long ID { get; set; }
-        public string FileName { get; set; }
-        //public Document Document { get; set; }
-        public virtual Person Creator { get; set; }
+    { 
+        public string FullPath { get; set; }
+
+        public string DocumentNumber { get; set; }
+
         public long CreatorId { get; set; }
+        public virtual Person Creator { get; set; }
+       
         public DateTime CreationDate { get; set; }
-        public virtual Person LastEditor { get; set; }
+       
         public long EditorId { get; set; }
+        public virtual Person LastEditor { get; set; }
+      
         public DateTime LastRevisionDate { get; set; }
         public long LastRevisionID { get; set; }
         public string LastComment { get; set; }
